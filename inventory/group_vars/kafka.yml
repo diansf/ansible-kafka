@@ -1,0 +1,42 @@
+---
+# Value for Kafka Version
+kafka_version: '2.7.1'
+
+# Value for Kafka Version
+scala_version: '2.13'
+
+# Value for MariaDB Root Password
+kafka_admin_password: 'root#Passw0rd'
+
+# Value for K3S Database User
+#db_user: 'k3s'
+
+# Value for K3S Database Password
+#db_password: 'k3s#Passw0rd'
+
+# Value for K3S Database Name
+#db_name: 'db_k3s'
+
+# Value for Block Device
+#block_device: 'vdb'
+
+# Value for Block Wipe
+#block_wipe: 'false'
+
+# Value for Enable ZFS
+#enable_zfs: 'false'
+
+# Value for ZFS Pool Name
+#zfs_pool_name: 'data'
+
+# Value for ZFS Pool Wipe
+#zfs_pool_wipe: 'false'
+
+# Value for ZFS Dataset Wipe
+#zfs_dataset_wipe: 'false'
+
+# Value for Enable LVM
+#enable_lvm: 'false'
+
+# Value for LVM Volume Group Name
+#lvm_vg_name: 'vg-data'
