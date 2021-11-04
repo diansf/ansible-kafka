@@ -1,0 +1,25 @@
+---
+- name: Create Directory home for kafka user
+  file:
+    path: "{{ user_home_directory }}"
+    state: directory
+
+- name: creating system group kafka
+  group:
+    name: "{{ group_system }}"
+    state: present
+
+- name: creating user kafka
+  user:
+    name: "{{ username_system }}"
+    groups: "{{ group_system }}"
+    state: present
+    home: "{{ user_home_directory }}"
+
+- name: Set Permission Chown Kafka Home
+  file:
+    path: "{{ user_home_directory }}"
+    owner: "{{ username_system }}"
+    group: "{{ group_system }}"
+    recurse: yes
+    mode: 0755

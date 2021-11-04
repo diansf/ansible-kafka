@@ -1,0 +1,15 @@
+[Unit]
+Description=ZooKeeper Service
+Documentation=http://zookeeper.apache.org
+Requires=network-online.target
+Wants=network-online.target
+
+[Service]
+User=kafka
+Group=kafka
+EnvironmentFile=-/etc/default/zookeeper
+ExecStart=/opt/kafka/bin/zookeeper-server-start.sh /opt/kafka/config/zookeeper.properties
+ExecStop=/opt/kafka/bin/zookeeper-server-stop.sh
+
+[Install]
+WantedBy=multi-user.target

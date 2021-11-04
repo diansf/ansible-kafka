@@ -1,0 +1,14 @@
+# Default for Kafka Version
+kafka_version: '2.7.1'
+
+# Default for Kafka Version
+scala_version: '2.13'
+
+# Default Value for user kafka on host
+username_system: 'kafka'
+
+# Default Value for group kafka on host
+group_system: 'kafka'
+
+# Default Value for home dir kafka on host
+user_home_directory: '/opt/kafka'

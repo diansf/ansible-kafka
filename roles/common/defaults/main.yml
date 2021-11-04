@@ -3,7 +3,7 @@
 node_ip: "{{ ansible_default_ipv4.address }}"
 
 # Default for Linux Image Type
-linux_image_type: 'cloud'
+linux_image_type: 'desktop'
 
 # Default for Reboot After OS Upgrade
 reboot_upgrade: 'true'
@@ -16,3 +16,6 @@ enable_zfs: 'false'
 
 # Default for Sanoid Version
 sanoid_version: '2.1.0'
+
+# Default for Sanoid Version
+java_package_name: 'openjdk-11-jre-headless'

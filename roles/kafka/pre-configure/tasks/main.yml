@@ -1,0 +1,7 @@
+---
+- include: facts.yml
+
+- include: cfg_kafka_user.yml
+
+# - include: cfg_kafka_source.yml
+  

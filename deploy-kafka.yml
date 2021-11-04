@@ -1,16 +1,25 @@
 ---
-- hosts: kafka
+- name: "Gathering Fact" 
+  hosts: all
   any_errors_fatal: true
   roles:
   - role: facts
 
-- hosts: kafka
+- name: "Common Preparation Setup" 
+  hosts: all
   any_errors_fatal: true
   roles:
   - role: common
 
-# - hosts: kafka
-#   any_errors_fatal: true
-#   serial: 1
-#   roles:
-#   - role: kafka
+- name: "Pre Configure Kafka and Zookeeper" 
+  hosts: kafka:zookeeper
+  any_errors_fatal: true
+  roles:
+  - role: kafka/pre-configure
+
+- name: "Zookeeper Configuration" 
+  hosts: zookeeper
+  any_errors_fatal: true
+  serial: 1
+  roles:
+  - role: kafka/zookeeper

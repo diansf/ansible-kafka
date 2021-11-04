@@ -1,0 +1,7 @@
+---
+- name: Install Java 
+  apt:
+    name: "{{ java_package_name }}"
+    force_apt_get: yes
+    update_cache: yes
+    state: present

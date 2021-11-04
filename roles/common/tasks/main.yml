@@ -3,15 +3,19 @@
 
 - include: pkg_base.yml
 
-- include: pkg_python.yml
+# - include: pkg_python.yml
 
-- include: pkg_archiver.yml
+# - include: pkg_archiver.yml
 
-- include: pkg_monitoring.yml
+# - include: pkg_monitoring.yml
 
-- include: pkg_networking.yml
+# - include: pkg_networking.yml
 
-- include: pkg_disk.yml
+- include: pkg_java.yml
+  when:
+    - inventory_hostname in groups['kafka'] or inventory_hostname in groups['zookeeper']
+
+- include: pkg_disk.yml 
 
 # - include: pkg_ip_vs.yml
 #   when:
@@ -30,4 +34,4 @@
 
 - include: pkg_clean.yml
 
-- include: sysctl.yml
+# - include: sysctl.yml

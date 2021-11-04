@@ -1,0 +1,78 @@
+---
+- name: Create Directory for Zookeeper data and logs
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{zookeeper_user}}"
+    group: "{{zookeeper_group}}"
+    mode: 0755
+  with_items:
+    - "{{ user_home_directory }}/data/zookeeper/data"
+    - "{{ user_home_directory }}/data/zookeeper/logs"
+
+- name: Create Zookeeper myid File
+  template:
+    src: myid.j2
+    dest: "{{ user_home_directory }}/data/zookeeper/data/myid"
+    mode: 0644
+    owner: "{{zookeeper_user}}"
+    group: "{{zookeeper_group}}"
+
+- name: Backup config file zookeeper.properties 
+  command: mv /opt/kafka/config/zookeeper.properties /opt/kafka/config/zookeeper.properties.orig~
+
+- name: Create New config file zookeeper.properties
+  template:
+    src: zookeeper.properties.j2
+    dest: /opt/kafka/config/zookeeper.properties
+    mode: 0644
+    owner: "{{zookeeper_user}}"
+    group: "{{zookeeper_group}}"
+
+- name: Create New config file jass_zookeeper.conf
+  template:
+    src: jaas_zookeeper.conf.j2
+    dest: "{{ user_home_directory }}/config/jaas_zookeeper.conf"
+    mode: 0644
+    owner: "{{zookeeper_user}}"
+    group: "{{zookeeper_group}}"
+
+- name: Create New env file for Zookeeper service
+  template:
+    src: env.zookeeper.j2
+    dest: /etc/default/zookeeper
+    mode: 0644
+    owner: root
+    group: root
+
+- name: Create Directory for Zookeeper service override
+  file:
+    path: /etc/systemd/system/zookeeper.service.d
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Create New file for Zookeeper service override
+  template:
+    src: override.conf.j2
+    dest: /etc/systemd/system/zookeeper.service.d/override.conf
+    mode: 0644
+    owner: root
+    group: root
+
+- name: Create New file for Zookeeper service
+  template:
+    src: zookeeper.service.j2
+    dest: /etc/systemd/system/zookeeper.service
+    mode: 0755
+    owner: root
+    group: root
+  notify:
+   - Reload SystemD
+
+- name: Start and Enable Zookeeper Service
+  service:
+    name: zookeeper
+    state: started
+    enabled: yes
