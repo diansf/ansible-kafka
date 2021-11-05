@@ -13,7 +13,43 @@
     extra_opts: 
     - --strip-components=1
 
-- name: Remove Kafka Source
+# - name: Remove Kafka Source
+#   file:
+#     path: /tmp/kafka.tgz
+#     state: absent
+
+- name: Create Directory for Zookeeper data and logs
   file:
-    path: /tmp/kafka.tgz
-    state: absent
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ username_system }}"
+    group: "{{ group_system }}"
+    mode: 0755
+  with_items:
+    - "{{ user_home_directory }}/data/zookeeper/data"
+    - "{{ user_home_directory }}/data/zookeeper/logs"
+
+- name: Create Directory for Kafka data and logs
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ username_system }}"
+    group: "{{ group_system }}"
+    mode: 0755
+  with_items:
+    - "{{ user_home_directory }}/data/kafka/logs"
+    - "{{ user_home_directory }}/data/logs"
+
+- name: Create Symlink Directory for Kafka logs
+  file:
+    src: "{{ user_home_directory }}/data/logs"
+    dest: "{{ user_home_directory }}/logs"
+    state: link
+
+- name: Set Permission Chown Kafka Home
+  file:
+    path: "{{ user_home_directory }}"
+    state: directory
+    owner: "{{ username_system }}"
+    group: "{{ group_system }}"
+    recurse: yes

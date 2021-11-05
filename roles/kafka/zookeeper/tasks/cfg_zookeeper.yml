@@ -1,15 +1,4 @@
 ---
-- name: Create Directory for Zookeeper data and logs
-  file:
-    path: "{{ item }}"
-    state: directory
-    owner: "{{zookeeper_user}}"
-    group: "{{zookeeper_group}}"
-    mode: 0755
-  with_items:
-    - "{{ user_home_directory }}/data/zookeeper/data"
-    - "{{ user_home_directory }}/data/zookeeper/logs"
-
 - name: Create Zookeeper myid File
   template:
     src: myid.j2

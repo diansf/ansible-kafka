@@ -1,0 +1,36 @@
+---
+- name: Fail if Operating System is not Supported
+  fail:
+    msg: "Supported Operating System is Debian 64-bit"
+  when:
+    - ansible_distribution != 'Debian'
+    - ansible_architecture != 'x86_64'
+
+- name: Check Required Variable 'block_device' if 'enable_zfs' or 'enable_lvm'
+  fail: 
+    msg: "Required Variable 'block_device' is Required"
+  when:
+    - enable_zfs == 'true' or enable_lvm == 'true'
+    - block_device is not defined
+
+- name: Make Sure 'enable_lvm' is false When 'enable_zfs' is true
+  set_fact:
+    enable_lvm: 'false'
+  when:
+    - enable_zfs == 'true'
+
+- name: Make Sure 'enable_zfs' is false When 'enable_lvm' is true
+  set_fact:
+    enable_zfs: 'false'
+  when:
+    - enable_lvm == 'true'
+
+- name: Populate service facts
+  service_facts:
+
+- name: Check Required Zookeeper Service is Running
+  fail: 
+    msg: "Required Zookeeper Service is 'running'"
+  when:
+    - ansible_facts.services['zookeeper.service'].state != 'running' or ansible_facts.services['zookeeper.service'].state == 'stopped'
+    

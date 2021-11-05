@@ -8,6 +8,8 @@
   group:
     name: "{{ group_system }}"
     state: present
+    system: yes
+
 
 - name: creating user kafka
   user:
@@ -15,11 +17,4 @@
     groups: "{{ group_system }}"
     state: present
     home: "{{ user_home_directory }}"
-
-- name: Set Permission Chown Kafka Home
-  file:
-    path: "{{ user_home_directory }}"
-    owner: "{{ username_system }}"
-    group: "{{ group_system }}"
-    recurse: yes
-    mode: 0755
+    system: yes

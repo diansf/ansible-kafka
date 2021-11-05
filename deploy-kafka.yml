@@ -5,11 +5,11 @@
   roles:
   - role: facts
 
-- name: "Common Preparation Setup" 
-  hosts: all
-  any_errors_fatal: true
-  roles:
-  - role: common
+# - name: "Common Preparation Setup" 
+#   hosts: all
+#   any_errors_fatal: true
+#   roles:
+#   - role: common
 
 - name: "Pre Configure Kafka and Zookeeper" 
   hosts: kafka:zookeeper
@@ -23,3 +23,10 @@
   serial: 1
   roles:
   - role: kafka/zookeeper
+
+- name: "Kafka Configuration" 
+  hosts: kafka
+  any_errors_fatal: true
+  serial: 1
+  roles:
+  - role: kafka/kafka

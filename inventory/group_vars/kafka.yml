@@ -8,6 +8,9 @@ scala_version: '2.13'
 # Value for Kafka Admin Password
 kafka_admin_password: 'kafka#Passw0rd'
 
+# Value for Kafka Admin Password
+# zookeeper_admin_password: 'zookeeper#Passw0rd'
+
 # Value for user kafka on host
 username_system: 'kafka'
 

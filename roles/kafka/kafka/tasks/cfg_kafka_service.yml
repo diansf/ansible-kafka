@@ -1,0 +1,40 @@
+---
+- name: Create New env file for Kafka service
+  template:
+    src: env.kafka.j2
+    dest: /etc/default/kafka
+    mode: 0644
+    owner: root
+    group: root
+
+- name: Create Directory for Kafka service override
+  file:
+    path: /etc/systemd/system/kafka.service.d
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Create New file for Kafka service override
+  template:
+    src: override.conf.j2
+    dest: /etc/systemd/system/kafka.service.d/override.conf
+    mode: 0644
+    owner: root
+    group: root
+
+- name: Create New file for Kafka service
+  template:
+    src: kafka.service.j2
+    dest: /etc/systemd/system/kafka.service
+    mode: 0755
+    owner: root
+    group: root
+  notify:
+   - Reload SystemD
+
+- name: Start and Enable Kafka Service
+  service:
+    name: kafka
+    state: started
+    enabled: yes

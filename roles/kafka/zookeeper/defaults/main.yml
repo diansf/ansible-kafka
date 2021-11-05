@@ -40,3 +40,7 @@ zookeeper_group: "{{ group_system }}"
 
 # Default Value for home dir kafka on host
 user_home_directory: '/opt/kafka'
+
+zookeeper_env:
+   KAFKA_HEAP_OPTS: "-Xms256M -Xmx256M"
+   KAFKA_OPTS: "-Dzookeeper.4lw.commands.whitelist=* -Djava.security.auth.login.config=/opt/kafka/config/jaas_zookeeper.conf"

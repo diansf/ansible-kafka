@@ -1,0 +1,52 @@
+---
+# Default for Node IP
+node_ip: "{{ ansible_default_ipv4.address }}"
+
+# Default for Node Name
+node_name: "{{ ansible_hostname }}"
+
+# Default for Enable IPVS
+enable_ip_vs: 'false'
+
+# Default for IPVS Mode
+ip_vs_mode: 'lc'
+
+# Default for Block Wipe
+block_wipe: 'false'
+
+# Default for Enable ZFS
+enable_zfs: 'false'
+
+# Default for ZFS Pool Name
+zfs_pool_name: 'data'
+
+# Default for ZFS Pool Wipe
+zfs_pool_wipe: 'false'
+
+# Default for ZFS Dataset Wipe
+zfs_dataset_wipe: 'false'
+
+# Default for Enable LVM
+enable_lvm: 'false'
+
+# Default for LVM Volume Group Name
+lvm_vg_name: 'vg-data'
+
+# Default Value for user zookeeper
+kafka_user: "{{ username_system }}"
+
+# Default Value for group zookeeper
+kafka_group: "{{ group_system }}"
+
+# Default Value for home dir kafka on host
+user_home_directory: '/opt/kafka'
+
+kafka_conf:
+   listeners: INTERBROKER://0.0.0.0:9092,INTERNAL://0.0.0.0:9093,EXTERNAL://0.0.0.0:9094
+   advertised_listener: INTERBROKER://{{ node_ip }}:9092,INTERNAL://{{ node_ip }}:9093,EXTERNAL://{{ node_name }}:9094
+   listener_security_protocol_map: INTERBROKER:PLAINTEXT,INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+
+kafka_env:
+   KAFKA_HEAP_OPTS: "-Xms512M -Xmx512M"
+   KAFKA_JMX_OPTS: "-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.rmi.port=9581 -Dcom.sun.management.jmxremote.port=9581 -Djava.rmi.server.hostname={{ node_ip }}"
+   KAFKA_OPTS: "-Djava.security.auth.login.config=/opt/kafka/config/jaas_kafka_server.conf"

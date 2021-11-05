@@ -1,0 +1,14 @@
+Client {
+  org.apache.kafka.common.security.plain.PlainLoginModule required
+    username="admin"
+    password="{{ zookeeper_admin_password }}"
+  ;
+};
+
+KafkaServer {
+  org.apache.kafka.common.security.plain.PlainLoginModule required
+    username="admin"
+    password="{{ kafka_admin_password }}"
+    user_admin="{{ kafka_admin_password }}"
+  ;
+};
