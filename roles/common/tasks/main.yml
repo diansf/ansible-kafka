@@ -3,13 +3,13 @@
 
 - include: pkg_base.yml
 
-# - include: pkg_python.yml
+- include: pkg_python.yml
 
-# - include: pkg_archiver.yml
+- include: pkg_archiver.yml
 
-# - include: pkg_monitoring.yml
+- include: pkg_monitoring.yml
 
-# - include: pkg_networking.yml
+- include: pkg_networking.yml
 
 - include: pkg_java.yml
   when:

@@ -13,10 +13,10 @@
     extra_opts: 
     - --strip-components=1
 
-# - name: Remove Kafka Source
-#   file:
-#     path: /tmp/kafka.tgz
-#     state: absent
+- name: Remove Kafka Source
+  file:
+    path: /tmp/kafka.tgz
+    state: absent
 
 - name: Create Directory for Zookeeper data and logs
   file:
