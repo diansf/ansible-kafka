@@ -1,42 +1,8 @@
 ---
-# Value for Kafka Version
-kafka_version: '2.7.1'
-
-# Value for Kafka Version
-scala_version: '2.13'
-
-# Value for Kafka Admin Password
+# Value for Zookeeper Admin Password
 zookeeper_admin_password: 'zookeeper#Passw0rd'
 
-# Value for user kafka on host
-username_system: 'kafka'
-
-# Value for group kafka on host
-group_system: 'kafka'
-
-# Value for home dir kafka on host
-user_home_directory: '/opt/kafka'
-
-# Value for Block Device
-#block_device: 'vdb'
-
-# Value for Block Wipe
-#block_wipe: 'false'
-
-# Value for Enable ZFS
-#enable_zfs: 'false'
-
-# Value for ZFS Pool Name
-#zfs_pool_name: 'data'
-
-# Value for ZFS Pool Wipe
-#zfs_pool_wipe: 'false'
-
-# Value for ZFS Dataset Wipe
-#zfs_dataset_wipe: 'false'
-
-# Value for Enable LVM
-#enable_lvm: 'false'
-
-# Value for LVM Volume Group Name
-#lvm_vg_name: 'vg-data'
+# Value for Zookeeper Env
+zookeeper_env:
+   KAFKA_HEAP_OPTS: "-Xms128M -Xmx128M"
+   KAFKA_OPTS: "-Dzookeeper.4lw.commands.whitelist=* -Djava.security.auth.login.config=/opt/kafka/config/jaas_zookeeper.conf"

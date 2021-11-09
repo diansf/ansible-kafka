@@ -1,4 +1,6 @@
 ---
 - include: facts.yml
 
-- include: cfg_zookeeper.yml
+- include: zookeeper_cfg.yml
+
+- include: zookeeper_svc.yml

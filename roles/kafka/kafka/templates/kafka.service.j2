@@ -5,8 +5,8 @@ Requires=network-online.target
 After=network-online.target zookeeper.service
 
 [Service]
-User=kafka
-Group=kafka
+User={{ kafka_user }}
+Group={{ kafka_group }}
 EnvironmentFile=-/etc/default/kafka
 ExecStart=/opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties
 ExecStop=/opt/kafka/bin/kafka-server-stop.sh

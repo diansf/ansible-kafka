@@ -1,0 +1,24 @@
+---
+- name: Create Kafka Data Directory
+  file:
+    path: "{{ user_home_directory }}"
+    owner: root
+    group: root
+    mode: 0755
+    state: directory
+
+- name: Set Kafka Data Storage Mountpoint to Kafka Data Directory (ZFS)
+  shell: zfs set mountpoint="{{ user_home_directory }}"/data {{ zfs_pool_name }}/kafka
+  when:
+    - enable_zfs == 'true'
+
+- name: Set Kafka Data Storage Mountpoint to Kafka Data Directory (LVM)
+  mount:
+    src: "/dev/{{ lvm_vg_name }}/lv-kafka"
+    path: "{{ user_home_directory }}/data"
+    fstype: xfs
+    opts: discard,noatime
+    state: mounted
+    backup: yes
+  when:
+    - enable_lvm == 'true'

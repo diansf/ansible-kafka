@@ -1,17 +1,17 @@
 ---
-- name: Create Directory home for kafka user
-  file:
-    path: "{{ user_home_directory }}"
-    state: directory
+# - name: Create Directory Home for Kafka User
+#   file:
+#     path: "{{ user_home_directory }}"
+#     state: directory
 
-- name: creating system group kafka
+- name: Creating System Group Kafka
   group:
     name: "{{ group_system }}"
     state: present
     system: yes
 
 
-- name: creating user kafka
+- name: Creating User Kafka
   user:
     name: "{{ username_system }}"
     groups: "{{ group_system }}"

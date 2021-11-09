@@ -1,7 +1,23 @@
 ---
 - include: facts.yml
 
-- include: cfg_kafka_user.yml
+- include: pre_cfg_block.yml
+  when:
+    - enable_zfs == 'true' or enable_lvm == 'true'
 
-- include: cfg_kafka_source.yml
+- include: pre_cfg_zfs.yml
+  when:
+    - enable_zfs == 'true'
+
+- include: pre_cfg_lvm.yml
+  when:
+    - enable_lvm == 'true'
+
+- include: pre_cfg_mount.yml
+  when:
+    - enable_zfs == 'true' or enable_lvm == 'true'
+
+- include: pre_cfg_user.yml
+
+- include: pre_kafka_source.yml
   

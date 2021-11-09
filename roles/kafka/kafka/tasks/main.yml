@@ -1,6 +1,6 @@
 ---
 - include: facts.yml
 
-- include: cfg_kafka_properties.yml
+- include: kafka_cfg.yml
 
-- include: cfg_kafka_service.yml
+- include: kafka_svc.yml
