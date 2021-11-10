@@ -46,3 +46,5 @@ enable_lvm: 'false'
 # Default for LVM Volume Group Name
 lvm_vg_name: 'vg-data'
 
+# Default for Sanoid Version
+java_package_name: 'openjdk-11-jre-headless'

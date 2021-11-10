@@ -11,16 +11,7 @@
 
 - include: pkg_networking.yml
 
-- include: pkg_java.yml
-  when:
-    - inventory_hostname in groups['kafkas'] or inventory_hostname in groups['zookeepers']
-
-- include: pkg_disk.yml 
-
-# - include: pkg_ip_vs.yml
-#   when:
-#     - inventory_hostname in groups['masters'] or inventory_hostname in groups['infras'] or inventory_hostname in groups['nodes'] or inventory_hostname in groups['new_masters'] or inventory_hostname in groups['new_infras'] or inventory_hostname in groups['new_nodes']
-#     - enable_ip_vs
+- include: pkg_disk.yml
 
 - include: pkg_zfs.yml
   when:
@@ -34,4 +25,4 @@
 
 - include: pkg_clean.yml
 
-# - include: sysctl.yml
+- include: sysctl.yml

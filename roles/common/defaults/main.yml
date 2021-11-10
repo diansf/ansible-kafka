@@ -16,6 +16,3 @@ enable_zfs: 'false'
 
 # Default for Sanoid Version
 sanoid_version: '2.1.0'
-
-# Default for Sanoid Version
-java_package_name: 'openjdk-11-jre-headless'

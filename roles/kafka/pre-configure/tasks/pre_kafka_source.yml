@@ -22,8 +22,8 @@
   file:
     path: "{{ item }}"
     state: directory
-    owner: "{{ username_system }}"
-    group: "{{ group_system }}"
+    owner: kafka
+    group: kafka
     mode: 0755
   with_items:
     - "{{ user_home_directory }}/data/zookeeper/data"
@@ -33,8 +33,8 @@
   file:
     path: "{{ item }}"
     state: directory
-    owner: "{{ username_system }}"
-    group: "{{ group_system }}"
+    owner: kafka
+    group: kafka
     mode: 0755
   with_items:
     - "{{ user_home_directory }}/data/kafka/logs"
@@ -50,6 +50,6 @@
   file:
     path: "{{ user_home_directory }}"
     state: directory
-    owner: "{{ username_system }}"
-    group: "{{ group_system }}"
+    owner: kafka
+    group: kafka
     recurse: yes

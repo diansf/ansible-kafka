@@ -4,45 +4,45 @@
     src: server.properties.j2
     dest: "{{ user_home_directory }}/config/server.properties"
     mode: 0644
-    owner: "{{kafka_user}}"
-    group: "{{kafka_group}}"
+    owner: kafka
+    group: kafka
 
 - name: Create New config file log4j.properties
   template:
     src: log4j.properties.j2
     dest: "{{ user_home_directory }}/config/log4j.properties"
     mode: 0644
-    owner: "{{kafka_user}}"
-    group: "{{kafka_group}}"
+    owner: kafka
+    group: kafka
 
 - name: Create New config file server.properties
   template:
     src: producer.properties.j2
     dest: "{{ user_home_directory }}/config/producer.properties"
     mode: 0644
-    owner: "{{kafka_user}}"
-    group: "{{kafka_group}}"
+    owner: kafka
+    group: kafka
 
 - name: Create New config file server.properties
   template:
     src: consumer.properties.j2
     dest: "{{ user_home_directory }}/config/consumer.properties"
     mode: 0644
-    owner: "{{kafka_user}}"
-    group: "{{kafka_group}}"
+    owner: kafka
+    group: kafka
 
 - name: Create New config file jaas_kafka_client.conf
   template:
     src: jaas_kafka_client.conf.j2
     dest: "{{ user_home_directory }}/config/jaas_kafka_client.conf"
     mode: 0644
-    owner: "{{kafka_user}}"
-    group: "{{kafka_group}}"
+    owner: kafka
+    group: kafka
 
 - name: Create New config file jaas_kafka_server.conf
   template:
     src: jaas_kafka_server.conf.j2
     dest: "{{ user_home_directory }}/config/jaas_kafka_server.conf"
     mode: 0644
-    owner: "{{kafka_user}}"
-    group: "{{kafka_group}}"
+    owner: kafka
+    group: kafka
