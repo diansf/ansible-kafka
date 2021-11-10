@@ -1,7 +1,4 @@
 ---
-- name: Backup config file server.properties 
-  command: mv /opt/kafka/config/server.properties /opt/kafka/config/server.properties.orig~
-
 - name: Create New config file server.properties
   template:
     src: server.properties.j2
@@ -9,9 +6,6 @@
     mode: 0644
     owner: "{{kafka_user}}"
     group: "{{kafka_group}}"
-
-- name: Backup config file log4j.properties 
-  command: mv /opt/kafka/config/log4j.properties /opt/kafka/config/log4j.properties.orig~
 
 - name: Create New config file log4j.properties
   template:
@@ -21,9 +15,6 @@
     owner: "{{kafka_user}}"
     group: "{{kafka_group}}"
 
-- name: Backup config file producer.properties
-  command: mv /opt/kafka/config/producer.properties /opt/kafka/config/producer.properties.orig~
-
 - name: Create New config file server.properties
   template:
     src: producer.properties.j2
@@ -31,9 +22,6 @@
     mode: 0644
     owner: "{{kafka_user}}"
     group: "{{kafka_group}}"
-
-- name: Backup config file consumer.properties
-  command: mv /opt/kafka/config/consumer.properties /opt/kafka/config/consumer.properties.orig~
 
 - name: Create New config file server.properties
   template:

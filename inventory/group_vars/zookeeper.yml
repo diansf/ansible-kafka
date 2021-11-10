@@ -1,8 +1,0 @@
----
-# Value for Zookeeper Admin Password
-zookeeper_admin_password: 'zookeeper#Passw0rd'
-
-# Value for Zookeeper Env
-zookeeper_env:
-   KAFKA_HEAP_OPTS: "-Xms128M -Xmx128M"
-   KAFKA_OPTS: "-Dzookeeper.4lw.commands.whitelist=* -Djava.security.auth.login.config=/opt/kafka/config/jaas_zookeeper.conf"

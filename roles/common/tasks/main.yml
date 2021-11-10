@@ -13,7 +13,7 @@
 
 - include: pkg_java.yml
   when:
-    - inventory_hostname in groups['kafka'] or inventory_hostname in groups['zookeeper']
+    - inventory_hostname in groups['kafkas'] or inventory_hostname in groups['zookeepers']
 
 - include: pkg_disk.yml 
 

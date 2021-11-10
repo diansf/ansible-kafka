@@ -14,6 +14,9 @@ kafka_group: "{{ group_system }}"
 # Default Value for home dir kafka on host
 user_home_directory: '/opt/kafka'
 
+# Default Value for Kafka Admin Password
+kafka_admin_password: 'kafka#Passw0rd'
+
 # Default Value for Kafka Server Properties
 kafka_conf:
    listeners: INTERBROKER://0.0.0.0:9092,INTERNAL://0.0.0.0:9093,EXTERNAL://0.0.0.0:9094

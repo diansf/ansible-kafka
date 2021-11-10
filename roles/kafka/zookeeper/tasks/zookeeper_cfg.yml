@@ -7,9 +7,6 @@
     owner: "{{zookeeper_user}}"
     group: "{{zookeeper_group}}"
 
-- name: Backup config file zookeeper.properties 
-  command: mv /opt/kafka/config/zookeeper.properties /opt/kafka/config/zookeeper.properties.orig~
-
 - name: Create New config file zookeeper.properties
   template:
     src: zookeeper.properties.j2

@@ -1,3 +1,8 @@
 - name: Reload SystemD
   systemd:
     daemon_reload: yes
+
+- name: Restart Kafka Service
+  service:
+    name: kafka
+    state: restarted
