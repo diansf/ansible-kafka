@@ -13,6 +13,8 @@
   when:
     - enable_lvm == 'true'
 
+- include: pre_cfg_clean.yml
+
 - include: pre_cfg_mount.yml
   when:
     - enable_zfs == 'true' or enable_lvm == 'true'

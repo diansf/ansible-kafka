@@ -14,6 +14,9 @@ zookeeper_group: "{{ group_system }}"
 # Default Value for home dir kafka on host
 user_home_directory: '/opt/kafka'
 
+# Default Value for Kafka Admin Password
+zookeeper_admin_password: 'zookeeper#Passw0rd'
+
 zookeeper_env:
    KAFKA_HEAP_OPTS: "-Xms256M -Xmx256M"
    KAFKA_OPTS: "-Dzookeeper.4lw.commands.whitelist=* -Djava.security.auth.login.config=/opt/kafka/config/jaas_zookeeper.conf"

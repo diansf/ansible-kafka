@@ -1,0 +1,36 @@
+---
+# Value for Kafka Admin Password
+kafka_admin_password: 'kafka#Passw0rd'
+
+# Value for env Kafka
+kafka_env:
+   KAFKA_HEAP_OPTS: "-Xms256M -Xmx256M"
+   KAFKA_JMX_OPTS: "-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.rmi.port=9581 -Dcom.sun.management.jmxremote.port=9581 -Djava.rmi.server.hostname={{ node_ip }}"
+   KAFKA_OPTS: "-Djava.security.auth.login.config=/opt/kafka/config/jaas_kafka_server.conf"
+
+# Default Value for home dir kafka on host
+user_home_directory: '/opt/kafka'
+
+# Default for Block Wipe
+block_device: 'sdb'
+
+# Default for Block Wipe
+block_wipe: 'false'
+
+# Default for Enable ZFS
+enable_zfs: 'false'
+
+# Default for ZFS Pool Name
+zfs_pool_name: 'data'
+
+# Default for ZFS Pool Wipe
+zfs_pool_wipe: 'false'
+
+# Default for ZFS Dataset Wipe
+zfs_dataset_wipe: 'false'
+
+# Default for Enable LVM
+enable_lvm: 'false'
+
+# Default for LVM Volume Group Name
+lvm_vg_name: 'vg-data'
