@@ -1,0 +1,38 @@
+---
+# Value for Kafka Admin Password
+kafka_admin_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          66343361363731303265626530613033343438633064393536353262303736313364316665326361
+          3138336133343963383935303061653531653861646236640a356233313330623931663363646566
+          39343035323665666166383433643061643536623131613231333934363361376461383138346561
+          6133343466356563380a613530646533663330353333626665393235376438336632303138356563
+          66663134646530363338313962653139646530636363386566326233653463393030
+
+kafka_env:
+   KAFKA_HEAP_OPTS: "-Xms256M -Xmx256M"
+   KAFKA_JMX_OPTS: "-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.rmi.port=9581 -Dcom.sun.management.jmxremote.port=9581 -Djava.rmi.server.hostname={{ node_ip }}"
+   KAFKA_OPTS: "-Djava.security.auth.login.config=/opt/kafka/config/jaas_kafka_server.conf"
+
+# Default for Block Wipe
+block_device: 'sdb'
+
+# Default for Block Wipe
+block_wipe: 'false'
+
+# Default for Enable ZFS
+enable_zfs: 'false'
+
+# Default for ZFS Pool Name
+zfs_pool_name: 'data'
+
+# Default for ZFS Pool Wipe
+zfs_pool_wipe: 'false'
+
+# Default for ZFS Dataset Wipe
+zfs_dataset_wipe: 'false'
+
+# Default for Enable LVM
+enable_lvm: 'false'
+
+# Default for LVM Volume Group Name
+lvm_vg_name: 'vg-data'

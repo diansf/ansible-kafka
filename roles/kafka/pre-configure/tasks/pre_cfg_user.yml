@@ -6,15 +6,14 @@
 
 - name: Creating System Group Kafka
   group:
-    name: "{{ group_system }}"
+    name: kafka
     state: present
-    system: yes
 
 
 - name: Creating User Kafka
   user:
-    name: "{{ username_system }}"
-    groups: "{{ group_system }}"
+    name: kafka
+    groups: kafka
     state: present
     home: "{{ user_home_directory }}"
-    system: yes
+    shell: "/usr/sbin/nologin"

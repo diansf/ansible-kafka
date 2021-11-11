@@ -1,0 +1,38 @@
+---
+# Value for Kafka Admin Password
+zookeeper_admin_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          30326632336434363030313531376530613934396131356432333532613732353635363337663833
+          6331303164386561366236666635393065623661376462350a376465353164313237656136386164
+          36303037653835646161373364306333336662323832323335643263633336366362373063636633
+          3538383665303437380a353462353766383963643537353961303665343661306632316165663739
+          61626634363461373039613639326362303833633539613532613738366262373834626135353365
+          3665353731313162653164313464623630336335623532633536
+
+zookeeper_env:
+   KAFKA_HEAP_OPTS: "-Xms128M -Xmx128M"
+   KAFKA_OPTS: "-Dzookeeper.4lw.commands.whitelist=* -Djava.security.auth.login.config=/opt/kafka/config/jaas_zookeeper.conf"
+
+# Default for Block Wipe
+block_device: 'sdb'
+
+# Default for Block Wipe
+block_wipe: 'false'
+
+# Default for Enable ZFS
+enable_zfs: 'false'
+
+# Default for ZFS Pool Name
+zfs_pool_name: 'data'
+
+# Default for ZFS Pool Wipe
+zfs_pool_wipe: 'false'
+
+# Default for ZFS Dataset Wipe
+zfs_dataset_wipe: 'false'
+
+# Default for Enable LVM
+enable_lvm: 'false'
+
+# Default for LVM Volume Group Name
+lvm_vg_name: 'vg-data'

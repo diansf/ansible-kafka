@@ -2,7 +2,16 @@
 kafka_version: '2.7.1'
 
 # Default for Kafka Version
+kafka_version_major: '2'
+kafka_version_minor: '7'
+kafka_version_revision: '1'
+
+# Default for Scala Version
 scala_version: '2.13'
+
+# Default for Scala Version
+scala_version_major: '2'
+scala_version_minior: '13'
 
 # Default Value for user kafka on host
 username_system: 'kafka'
@@ -37,3 +46,5 @@ enable_lvm: 'false'
 # Default for LVM Volume Group Name
 lvm_vg_name: 'vg-data'
 
+# Default for Sanoid Version
+java_package_name: 'openjdk-11-jre-headless'

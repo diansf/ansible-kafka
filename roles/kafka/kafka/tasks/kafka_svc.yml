@@ -6,6 +6,9 @@
     mode: 0644
     owner: root
     group: root
+  notify:
+   - Reload SystemD
+   - Restart Kafka Service
 
 - name: Create Directory for Kafka service override
   file:
@@ -22,6 +25,9 @@
     mode: 0644
     owner: root
     group: root
+  notify:
+   - Reload SystemD
+   - Restart Kafka Service
 
 - name: Create New file for Kafka service
   template:
@@ -32,6 +38,7 @@
     group: root
   notify:
    - Reload SystemD
+   - Restart Kafka Service
 
 - name: Start and Enable Kafka Service
   service:

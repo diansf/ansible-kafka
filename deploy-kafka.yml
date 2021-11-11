@@ -12,21 +12,21 @@
   - role: common
 
 - name: "Pre Configure Kafka and Zookeeper" 
-  hosts: kafka:zookeeper
+  hosts: kafkas:zookeepers
   any_errors_fatal: true
   roles:
   - role: kafka/pre-configure
 
 - name: "Zookeeper Configuration" 
-  hosts: zookeeper
+  hosts: zookeepers
   any_errors_fatal: true
-  serial: 1
+  # serial: 1
   roles:
   - role: kafka/zookeeper
 
 - name: "Kafka Configuration" 
-  hosts: kafka
+  hosts: kafkas
   any_errors_fatal: true
-  serial: 1
+  # serial: 1
   roles:
   - role: kafka/kafka

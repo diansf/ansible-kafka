@@ -1,6 +1,8 @@
 ---
 - include: facts.yml
 
+- include: pre_cfg_java.yml
+
 - include: pre_cfg_block.yml
   when:
     - enable_zfs == 'true' or enable_lvm == 'true'
@@ -12,6 +14,8 @@
 - include: pre_cfg_lvm.yml
   when:
     - enable_lvm == 'true'
+
+- include: pre_cfg_clean.yml
 
 - include: pre_cfg_mount.yml
   when:

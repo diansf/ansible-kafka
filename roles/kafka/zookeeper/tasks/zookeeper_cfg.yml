@@ -4,25 +4,22 @@
     src: myid.j2
     dest: "{{ user_home_directory }}/data/zookeeper/data/myid"
     mode: 0644
-    owner: "{{zookeeper_user}}"
-    group: "{{zookeeper_group}}"
-
-- name: Backup config file zookeeper.properties 
-  command: mv /opt/kafka/config/zookeeper.properties /opt/kafka/config/zookeeper.properties.orig~
+    owner: kafka
+    group: kafka
 
 - name: Create New config file zookeeper.properties
   template:
     src: zookeeper.properties.j2
     dest: /opt/kafka/config/zookeeper.properties
     mode: 0644
-    owner: "{{zookeeper_user}}"
-    group: "{{zookeeper_group}}"
+    owner: kafka
+    group: kafka
 
 - name: Create New config file jass_zookeeper.conf
   template:
     src: jaas_zookeeper.conf.j2
     dest: "{{ user_home_directory }}/config/jaas_zookeeper.conf"
     mode: 0644
-    owner: "{{zookeeper_user}}"
-    group: "{{zookeeper_group}}"
+    owner: kafka
+    group: kafka
 

@@ -37,6 +37,6 @@ authProvider.1=org.apache.zookeeper.server.auth.SASLAuthenticationProvider
 requireClientAuthScheme=sasl
 jaasLoginRenew=3600000
 
-{% for host in groups['zookeeper'] %}
-server.{{ hostvars[host]['zookeeper_id'] | default(groups.zookeeper.index(host) + 1)}}={{ host }}:2888:3888
+{% for zookeeper in groups['zookeepers'] %}
+server.{{ hostvars[zookeeper]['zookeeper_id'] | default(loop.index)}}={{ hostvars[zookeeper].node_ip }}:2888:3888
 {% endfor %}

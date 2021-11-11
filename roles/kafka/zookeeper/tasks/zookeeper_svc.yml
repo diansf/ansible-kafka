@@ -6,6 +6,9 @@
     mode: 0644
     owner: root
     group: root
+  notify:
+   - Reload SystemD
+   - Restart Zookeeper Service
 
 - name: Create Directory for Zookeeper service override
   file:
@@ -22,6 +25,9 @@
     mode: 0644
     owner: root
     group: root
+  notify:
+   - Reload SystemD
+   - Restart Zookeeper Service
 
 - name: Create New file for Zookeeper service
   template:
@@ -32,6 +38,7 @@
     group: root
   notify:
    - Reload SystemD
+   - Restart Zookeeper Service
 
 - name: Start and Enable Zookeeper Service
   service:
