@@ -18,9 +18,11 @@ user_home_directory: '/opt/kafka'
 kafka_admin_password: 'kafka#Passw0rd'
 
 # Default Value for Kafka Server Properties
+dynamic_external_port: "{{ 9094 + groups.kafkas.index(inventory_hostname) }}"
+
 kafka_conf:
-   listeners: INTERBROKER://0.0.0.0:9092,INTERNAL://0.0.0.0:9093,EXTERNAL://0.0.0.0:9094
-   advertised_listener: INTERBROKER://{{ node_ip }}:9092,INTERNAL://{{ node_ip }}:9093,EXTERNAL://{{ node_name }}:9094
+   listeners: INTERBROKER://0.0.0.0:9092,INTERNAL://0.0.0.0:9093,EXTERNAL://0.0.0.0:{{ dynamic_external_port }}
+   advertised_listener: INTERBROKER://{{ node_ip }}:9092,INTERNAL://{{ node_ip }}:9093,EXTERNAL://{{ node_name }}:{{ dynamic_external_port }}
    listener_security_protocol_map: INTERBROKER:PLAINTEXT,INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
 
 # Default Value for Kafka Env Service

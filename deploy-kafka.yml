@@ -20,13 +20,11 @@
 - name: "Zookeeper Configuration" 
   hosts: zookeepers
   any_errors_fatal: true
-  # serial: 1
   roles:
   - role: kafka/zookeeper
 
 - name: "Kafka Configuration" 
   hosts: kafkas
   any_errors_fatal: true
-  # serial: 1
   roles:
   - role: kafka/kafka
