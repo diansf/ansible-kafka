@@ -10,14 +10,14 @@ zookeeper_admin_password: !vault |
           3665353731313162653164313464623630336335623532633536
 
 zookeeper_env:
-   KAFKA_HEAP_OPTS: "-Xms128M -Xmx128M"
+   KAFKA_HEAP_OPTS: "-Xms512M -Xmx512M"
    KAFKA_OPTS: "-Dzookeeper.4lw.commands.whitelist=* -Djava.security.auth.login.config=/opt/kafka/config/jaas_zookeeper.conf"
 
 # Default for Block Wipe
-block_device: 'sdb'
+block_device: 'vdc'
 
 # Default for Block Wipe
-block_wipe: 'false'
+block_wipe: 'true'
 
 # Default for Enable ZFS
 enable_zfs: 'false'
@@ -32,7 +32,7 @@ zfs_pool_wipe: 'false'
 zfs_dataset_wipe: 'false'
 
 # Default for Enable LVM
-enable_lvm: 'false'
+enable_lvm: 'true'
 
 # Default for LVM Volume Group Name
 lvm_vg_name: 'vg-data'
